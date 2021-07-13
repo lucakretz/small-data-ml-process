@@ -1,0 +1,9 @@
+{
+    "data": {
+        "in_path": "./data/CEDAR",
+        "out_path": "./data/processed/CEDAR/",
+        "collector_mode": "tree",
+        "type": "annotations",
+        "transfer_files": false
+    }
+}

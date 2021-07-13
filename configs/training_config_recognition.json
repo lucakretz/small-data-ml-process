@@ -1,0 +1,90 @@
+{
+    "encoder": {
+        "data": {
+            "data_dir": "./data/processed/Petimages/input",
+            "set_id": 1,
+            "image_dim": [
+                299,
+                299
+            ],
+            "train_batch_size": 32,
+            "val_batch_size": 4,
+            "test_batch_size": 4,
+            "category_map": null
+        },
+        "trainer_args": {
+            "logger": true,
+            "log_dir": "./results/tb_logs",
+            "log_folder": "recognition_encoder",
+            "checkpoint_folder": "./results/recognition_encoder",
+            "checkpoint_filename": "recognition_encoder-{epoch:02d}-{val_score:.2f}",
+            "monitor": "val_score",
+            "mode": "max",
+            "root_dir": "./results",
+            "gpus": 1,
+            "check_val_every_n_epoch": 1,
+            "max_epochs": 10,
+            "profiler": "simple",
+            "convert_to_onnx": false
+        },
+        "hparams": {
+            "lr": 0.0001,
+            "weight_decay": 0.1,
+            "step_size": 10,
+            "gamma": 0.1,
+            "pretrained": true,
+            "image_dim": [
+                299,
+                299
+            ],
+            "out_dim": 100,
+            "margin": 2.0,
+            "train_encoder": true
+        }
+    },
+    "task_head": {
+        "data": {
+            "data_dir": "./data/processed/Petimages/input",
+            "set_id": 0,
+            "image_dim": [
+                299,
+                299
+            ],
+            "train_batch_size": 16,
+            "val_batch_size": 4,
+            "test_batch_size": 4,
+            "category_map": null
+        },
+        "trainer_args": {
+            "logger": true,
+            "log_dir": "./results/tb_logs",
+            "log_folder": "recognition_classifier",
+            "checkpoint_folder": "./results/recognition_classifier",
+            "checkpoint_filename": "recognition_classifier-{epoch:02d}-{val_score:.2f}",
+            "monitor": "val_score",
+            "mode": "max",
+            "root_dir": "./results",
+            "gpus": 1,
+            "check_val_every_n_epoch": 1,
+            "max_epochs": 8,
+            "profiler": "simple",
+            "convert_to_onnx": false
+        },
+        "hparams": {
+            "weight_decay": 0.001,
+            "lr": 0.001,
+            "dropout": 0.5,
+            "step_size": 2,
+            "gamma": 0.1,
+            "pretrained": false,
+            "image_dim": [
+                299,
+                299
+            ],
+            "out_dim": 2,
+            "train_encoder": false,
+            "head_input_size": 100,
+            "task": "classification"
+        }
+    }
+}

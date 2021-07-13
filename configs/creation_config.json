@@ -1,0 +1,14 @@
+{
+    "data": {
+        "in_path": "./data/CEDAR",
+        "out_path": "./data/processed/CEDAR/input",
+        "collector_mode": "tree",
+        "type": "data",
+        "annotation_folder": "./data/processed/CEDAR/annotations",
+        "data_split":{
+            "train": 0.8,
+            "val": 0.1,
+            "test": 0.1
+        }
+    }
+}
