@@ -37,8 +37,7 @@ PRINTOUTS = {
     "could have been instanciated due to the following reasons:\n"
     "1. Add the selected file types to the Reader MODES\n"
     "2. Implement a new information extractor class that "
-    "can handle the '{0}' file type(s)",
-    1: "\nDo you want to process masks or image data?",
+    "can handle the '{0}' file type(s)"
 }
 
 PNG_TYPES = ["masks", "image data"]
@@ -91,17 +90,8 @@ class Reader(AbstractReader):
             file_format in MODES[self.category] for file_format in self.file_formats
         ):
             raise KeyError(PRINTOUTS[0].format(",".join(self.file_formats)))
-        # add the string to
-        # distinguish between masks
-        # data images
-        png_add_str = ""
-        if "png" in self.file_formats:
-            input_type = self.input_handler.expect_input(PRINTOUTS[1], PNG_TYPES)
-            self.input_handler.check_input(input_type, valid_inputs=PNG_TYPES)
-            if input_type == "masks":
-                png_add_str = "_mask"
         self.modes = [
-            MODES[self.category][file_format + png_add_str]
+            MODES[self.category][file_format]
             for file_format in self.file_formats
         ]
         self.information_extractors = [EXTRACTORS[mode] for mode in self.modes]

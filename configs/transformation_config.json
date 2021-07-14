@@ -1,6 +1,6 @@
 {
     "data": {
-        "in_path": "./data/CEDAR",
+        "in_path": "/Users/luca/Downloads/CEDAR",
         "out_path": "./data/processed/CEDAR/",
         "collector_mode": "tree",
         "type": "annotations",

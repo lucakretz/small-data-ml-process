@@ -43,6 +43,7 @@ class InputHandler:
             TimeoutError: Time for input is up.
         """
         input_statement = None
+        choices += [DEFAULT_INPUT]
 
         def set_timeout(limit: int = timeout) -> None:
             time.sleep(limit)
