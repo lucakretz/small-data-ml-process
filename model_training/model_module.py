@@ -236,6 +236,8 @@ class TaskModule(LightningModule):  # pylint: disable=too-many-ancestors
         elif self.hparams.task == "fraud_analysis":
             self.head = self._get_classifier()
         elif self.hparams.task == "anomaly_detection":
+            self.head = self._get_classifier()
+        else:    
             self.head = LogisticRegression(self.hparams.head_input_size, num_classes=2)
 
     def _get_classifier(self) -> nn.Sequential:
